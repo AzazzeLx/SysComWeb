@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:view renderKitId="PRIMEFACES_MOBILE"/>
+    <h:head>
+        <title>SYSCOM</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/templates/plantilla_principal.xhtml">
+            <ui:define name="content">
+                
+                <pm:page id="pgList">
+                    
+                    <ui:composition template="./WEB-INF/templates/plantilla_principal.xhtml">
+                        <ui:define name="content">
+                            
+                            <pm:content id="listar" >
+                    
+                    <p:dataTable var="tc" value="#{tipoComprobanteBean.listarIni()}">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{tc.tipoComprobante}" />
+                        </p:column>
+
+                        <p:column headerText="Descripcion">
+                            <h:outputText value="#{tc.descripcion}" />
+                        </p:column>
+                    </p:dataTable>
+                    
+                </pm:content>
+                            
+                        </ui:define>
+                    </ui:composition>
+                    
+                    
+                    
+                </pm:page>
+                
+                <pm:page id="pgReg">
+                    
+                    <ui:composition template="./WEB-INF/templates/plantilla_principal.xhtml">
+                        <ui:define name="content">
+                            
+                            
+                            <pm:content id="vregistrar" >
+                    <h:form>
+                    <pm:field>
+                        <p:outputLabel value="Tipo De Comprobante:" />
+                        <p:inputText value="#{tipoComprobanteBean.tipoComprobante.tipoComprobante}" maxlength="3" />  
+                    </pm:field>
+                    <pm:field>
+                        <p:outputLabel value="Descripcion:" />
+                        <p:inputText value="#{tipoComprobanteBean.tipoComprobante.descripcion}" />  
+                    </pm:field>
+                    <pm:field>
+                        <p:commandButton actionListener="#{tipoComprobanteBean.registrar()}" value="Registrar" update="growl" />
+                    </pm:field>
+                </h:form>
+                </pm:content>
+                        </ui:define>
+                    </ui:composition>
+                    
+                </pm:page>
+                
+                <pm:page id="pgEdit">
+                    
+                    <ui:composition template="./WEB-INF/templates/plantilla_principal.xhtml">
+                        <ui:define name="content">
+                            
+                            <pm:content id="veditar" >
+                    
+                </pm:content>
+                            
+                        </ui:define>
+                    </ui:composition>
+                    
+                    
+                </pm:page>
+            
+                
+                
+                
+                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
